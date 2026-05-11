@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 72" role="img" aria-label="Realize Health Seminars">
+  <!-- Icon mark: concentric orbital rings with coral accent -->
+  <g transform="translate(4, 4)">
+    <!-- Outer ring -->
+    <circle cx="32" cy="32" r="31" fill="#49AEC1" opacity="0.18"/>
+    <!-- Main circle -->
+    <circle cx="32" cy="32" r="27" fill="#49AEC1"/>
+    <!-- Inner wave arc 1 -->
+    <path d="M 8 32 Q 20 10 32 32 Q 44 54 56 32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+    <!-- Inner wave arc 2 (smaller) -->
+    <path d="M 14 32 Q 23 18 32 32 Q 41 46 50 32" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+    <!-- Core circle white -->
+    <circle cx="32" cy="32" r="10" fill="white" opacity="0.15"/>
+    <!-- Coral accent dot -->
+    <circle cx="27" cy="34" r="6" fill="#F29472"/>
+    <!-- Small white ring on coral -->
+    <circle cx="27" cy="34" r="2.5" fill="white" opacity="0.6"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="78" y="38" font-family="Optima, Raleway, Georgia, sans-serif" font-size="30" font-weight="800" fill="#486E8A" letter-spacing="-0.5">Realize</text>
+  <text x="79" y="56" font-family="Optima, Raleway, Georgia, sans-serif" font-size="12" font-weight="700" fill="#49AEC1" letter-spacing="3">HEALTH SEMINARS</text>
+</svg>
