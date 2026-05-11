@@ -1128,6 +1128,189 @@ details[open] summary::after {
   transform: translateY(0);
 }
 
+/* ── Enhancements: Coral accents, hover animations, photo slots ── */
+
+/* Coral eyebrow accent line */
+.section-header .eyebrow::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: var(--coral);
+  border-radius: 2px;
+  margin: .5rem auto 0;
+}
+
+/* More prominent coral on pillar icon hover */
+.pillar-card:hover .pillar-icon {
+  background: var(--coral-light);
+  color: var(--coral);
+}
+.pillar-card:hover .pillar-icon svg { stroke: var(--coral); }
+
+/* Course card — colored system stripe on top */
+.course-card { border-top: 4px solid var(--border); }
+.course-card:has(.badge-musculo) { border-top-color: var(--navy); }
+.course-card:has(.badge-visceral) { border-top-color: var(--teal); }
+.course-card:has(.badge-neuro)    { border-top-color: var(--steel); }
+.course-card:has(.badge-advanced) { border-top-color: var(--coral); }
+
+/* Stronger card hover */
+.course-card:hover {
+  box-shadow: 0 12px 36px rgba(72,110,138,.16);
+  transform: translateY(-6px);
+}
+.pillar-card:hover {
+  box-shadow: 0 12px 36px rgba(72,110,138,.14);
+  transform: translateY(-5px);
+}
+
+/* Nav link hover underline grows from center */
+.nav-links a:not(.nav-cta) {
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-links a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: var(--teal);
+  border-radius: 1px;
+  transition: left var(--transition), right var(--transition);
+}
+.nav-links a:not(.nav-cta):hover::after,
+.nav-links a:not(.nav-cta).active::after {
+  left: 0;
+  right: 0;
+}
+
+/* Coral top accent on course sidebar */
+.course-sidebar {
+  border-top: 4px solid var(--coral);
+}
+.course-sidebar-price { color: var(--coral); }
+
+/* Featured hero testimonial */
+.hero-testimonial {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,.15);
+  max-width: 580px;
+}
+.hero-testimonial blockquote {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: rgba(255,255,255,.9);
+  line-height: 1.65;
+  margin-bottom: .75rem;
+}
+.hero-testimonial blockquote::before { content: '\201C'; }
+.hero-testimonial blockquote::after  { content: '\201D'; }
+.hero-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.hero-testimonial-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.hero-testimonial-name {
+  font-size: .88rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.8);
+}
+
+/* Course photo slot on cards and course pages */
+.course-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.course-photo-placeholder {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, var(--bg-light), var(--teal-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--steel);
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.course-page-photo {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: 2rem;
+  display: block;
+}
+.course-page-photo-placeholder {
+  width: 100%;
+  height: 260px;
+  background: linear-gradient(135deg, var(--teal-light), var(--bg-light));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--steel);
+  font-size: .9rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* Coral highlight on section-header h2 first word */
+.section-header h2 em {
+  font-style: normal;
+  color: var(--coral);
+}
+
+/* Stat counter strip */
+.stat-strip {
+  background: var(--navy);
+  padding: 2rem 0;
+}
+.stat-strip-inner {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+.stat-item {
+  text-align: center;
+  color: var(--white);
+}
+.stat-number {
+  font-family: var(--font-head);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--coral);
+  line-height: 1;
+  margin-bottom: .25rem;
+}
+.stat-label {
+  font-size: .85rem;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 600;
+}
+
 /* ── Utility ── */
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
