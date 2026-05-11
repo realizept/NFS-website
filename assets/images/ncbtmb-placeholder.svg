@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 72" role="img" aria-label="NCBTMB Approved Provider">
+  <!-- Badge background -->
+  <rect x="1" y="1" width="158" height="70" rx="8" ry="8" fill="#ffffff" stroke="#49AEC1" stroke-width="2"/>
+  <!-- Top color bar -->
+  <rect x="1" y="1" width="158" height="18" rx="8" ry="8" fill="#486E8A"/>
+  <rect x="1" y="10" width="158" height="9" fill="#486E8A"/>
+  <!-- Seal circle -->
+  <circle cx="26" cy="44" r="20" fill="#f4f8fb" stroke="#49AEC1" stroke-width="1.5"/>
+  <circle cx="26" cy="44" r="14" fill="none" stroke="#486E8A" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="26" y="47" font-family="Raleway, sans-serif" font-size="7" font-weight="800" fill="#486E8A" text-anchor="middle">CE</text>
+  <!-- Text -->
+  <text x="80" y="13" font-family="Raleway, sans-serif" font-size="7" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">APPROVED PROVIDER</text>
+  <text x="80" y="34" font-family="Raleway, sans-serif" font-size="11" font-weight="800" fill="#486E8A" text-anchor="middle" letter-spacing="1">NCBTMB</text>
+  <text x="80" y="49" font-family="Raleway, sans-serif" font-size="7.5" font-weight="600" fill="#49AEC1" text-anchor="middle">National Certification Board</text>
+  <text x="80" y="60" font-family="Raleway, sans-serif" font-size="7" font-weight="500" fill="#6b7d8e" text-anchor="middle">for Therapeutic Massage &amp; Bodywork</text>
+</svg>
