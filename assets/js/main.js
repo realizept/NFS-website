@@ -6,8 +6,7 @@ const navLinks  = document.querySelector('.nav-links');
 if (navToggle && navLinks) {
   navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('open');
-    const expanded = navLinks.classList.contains('open');
-    navToggle.setAttribute('aria-expanded', expanded);
+    navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
   });
   document.addEventListener('click', (e) => {
     if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
@@ -16,7 +15,7 @@ if (navToggle && navLinks) {
   });
 }
 
-// Active nav link
+// Active nav link highlight
 const currentPath = window.location.pathname;
 document.querySelectorAll('.nav-links a').forEach(link => {
   const linkPath = new URL(link.href, window.location.origin).pathname;
@@ -33,61 +32,69 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Testimonial carousel (home page)
-const carousel = document.querySelector('.testimonial-carousel');
-if (carousel) {
-  const slides = carousel.querySelectorAll('.testimonial-slide');
-  const dots   = carousel.querySelectorAll('.carousel-dot');
-  let current  = 0;
-  let timer;
+// ── Contact form (Formspree AJAX) ──────────────────────────────────────
+const contactForm = document.getElementById('contact-form');
+const contactSuccess = document.getElementById('contact-success');
 
-  function goTo(index) {
-    slides[current].classList.remove('active');
-    dots[current]?.classList.remove('active');
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current]?.classList.add('active');
-  }
-
-  function autoPlay() {
-    timer = setInterval(() => goTo(current + 1), 5000);
-  }
-
-  if (slides.length) {
-    slides[0].classList.add('active');
-    dots[0]?.classList.add('active');
-    autoPlay();
-
-    carousel.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-      dot.addEventListener('click', () => { clearInterval(timer); goTo(i); autoPlay(); });
-    });
-    carousel.querySelector('.carousel-prev')?.addEventListener('click', () => { clearInterval(timer); goTo(current - 1); autoPlay(); });
-    carousel.querySelector('.carousel-next')?.addEventListener('click', () => { clearInterval(timer); goTo(current + 1); autoPlay(); });
-  }
-}
-
-// Email form (blog page)
-const emailForm = document.getElementById('notify-form');
-if (emailForm) {
-  emailForm.addEventListener('submit', (e) => {
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const msg = emailForm.querySelector('.form-success');
-    if (msg) msg.style.display = 'block';
-    emailForm.querySelector('input').value = '';
+
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const formData = new FormData(contactForm);
+    const action = contactForm.getAttribute('action');
+
+    // If Formspree ID has been set, submit via fetch
+    if (action && !action.includes('REPLACE_FORMSPREE_ID')) {
+      try {
+        const res = await fetch(action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          contactForm.reset();
+          contactForm.style.display = 'none';
+          if (contactSuccess) contactSuccess.style.display = 'block';
+        } else {
+          alert('Something went wrong. Please email us directly at info@realizept.com');
+        }
+      } catch {
+        alert('Could not send message. Please email us directly at info@realizept.com');
+      }
+    } else {
+      // Formspree not yet configured — fall back to mailto
+      const name    = formData.get('name') || '';
+      const subject = formData.get('subject') || 'Website Inquiry';
+      const message = formData.get('message') || '';
+      window.location.href =
+        `mailto:info@realizept.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: ' + name + '\n\n' + message)}`;
+      contactForm.reset();
+      if (contactSuccess) contactSuccess.style.display = 'block';
+    }
+
+    btn.textContent = originalText;
+    btn.disabled = false;
   });
 }
 
-// Contact form
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+// ── Treatment Tips notify form ──────────────────────────────────────────
+const notifyForm = document.getElementById('notify-form');
+if (notifyForm) {
+  notifyForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const msg = document.getElementById('contact-success');
+    const email = notifyForm.querySelector('input[type="email"]').value;
+    // Open mailto as a simple fallback until a mailing list service is connected
+    window.location.href = `mailto:info@realizept.com?subject=Notify%20Me%3A%20Treatment%20Tips&body=Please%20add%20me%20to%20the%20Treatment%20Tips%20notification%20list.%0A%0AEmail%3A%20${encodeURIComponent(email)}`;
+    const msg = notifyForm.querySelector('.form-success');
     if (msg) msg.style.display = 'block';
-    contactForm.reset();
+    notifyForm.querySelector('input').value = '';
   });
 }

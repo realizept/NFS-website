@@ -72,14 +72,16 @@
 
           <!-- Left: Contact Form -->
           <div>
-            <form id="contact-form" novalidate>
+            <form id="contact-form" action="https://formspree.io/f/REPLACE_FORMSPREE_ID" method="POST">
+              <input type="hidden" name="_subject" value="New message from Realize Health Seminars website">
+              <input type="hidden" name="_next" value="">
               <div class="form-group">
                 <label for="contact-name">Name</label>
                 <input type="text" id="contact-name" name="name" placeholder="Your name" required>
               </div>
               <div class="form-group">
                 <label for="contact-email">Email</label>
-                <input type="email" id="contact-email" name="email" placeholder="your@email.com" required>
+                <input type="email" id="contact-email" name="_replyto" placeholder="your@email.com" required>
               </div>
               <div class="form-group">
                 <label for="contact-subject">Subject</label>
@@ -99,7 +101,7 @@
               <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
             <div id="contact-success" style="display:none; margin-top:1.25rem; background:var(--teal-light); border:1px solid var(--teal); border-radius:var(--radius); padding:1rem 1.25rem; color:var(--teal-dark); font-weight:600;">
-              Thank you! We'll be in touch within 1 business day.
+              ✓ Thank you! We'll be in touch within 1 business day.
             </div>
           </div>
 
