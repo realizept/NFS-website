@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Outer teal disc -->
+  <circle cx="32" cy="32" r="31" fill="#49AEC1"/>
+  <!-- Steel blue mid ring -->
+  <circle cx="32" cy="32" r="22" fill="#81ACBE"/>
+  <!-- Inner teal disc -->
+  <circle cx="32" cy="32" r="14" fill="#49AEC1"/>
+  <!-- Coral accent dot -->
+  <circle cx="26" cy="34" r="7" fill="#F29472"/>
+  <!-- White highlight on coral -->
+  <circle cx="24" cy="32" r="2.5" fill="white" opacity="0.55"/>
+</svg>
