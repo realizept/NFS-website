@@ -623,42 +623,41 @@ p:last-child { margin-bottom: 0; }
 /* ── Stars ── */
 .stars { color: var(--coral); font-size: .9rem; margin-bottom: .75rem; }
 
-/* ── Testimonial Strip (compact, below page-hero on subpages) ── */
+/* ── Testimonial Strip (single quote bar, below page-hero on subpages) ── */
 .testimonial-strip {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 1.75rem 0;
+  padding: 1.5rem 0;
 }
 .testimonial-strip-inner {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  display: flex;
+  justify-content: center;
 }
 .testimonial-strip-item {
   display: flex;
-  flex-direction: column;
-  gap: .3rem;
-  padding: 0 2rem;
-}
-.testimonial-strip-item:not(:last-child) {
-  border-right: 1px solid var(--border);
+  align-items: baseline;
+  gap: .75rem;
+  max-width: 680px;
+  flex-wrap: wrap;
 }
 .testimonial-strip-stars {
   color: var(--coral);
   font-size: .78rem;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
+  flex-shrink: 0;
 }
 .testimonial-strip-quote {
-  font-size: .875rem;
-  color: var(--text);
+  font-size: .9rem;
+  color: var(--text-muted);
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.5;
   margin: 0;
 }
 .testimonial-strip-name {
-  font-size: .78rem;
+  font-size: .8rem;
   font-weight: 700;
   color: var(--text-muted);
+  white-space: nowrap;
 }
 
 /* ── News / Announcement ── */
@@ -1507,8 +1506,6 @@ details[open] summary::after {
   .grid-3           { grid-template-columns: 1fr; }
   .system-diagram   { grid-template-columns: 1fr; }
   .testimonial-grid { grid-template-columns: 1fr; }
-  .testimonial-strip-inner { grid-template-columns: 1fr; }
-  .testimonial-strip-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 1.25rem; margin-bottom: .25rem; }
   .footer-grid      { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom    { flex-direction: column; text-align: center; }
   .hero { padding: 4rem 0 3.5rem; }
