@@ -6,11 +6,13 @@ const navLinks  = document.querySelector('.nav-links');
 if (navToggle && navLinks) {
   navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
   });
   document.addEventListener('click', (e) => {
     if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
       navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
     }
   });
 }

@@ -1396,22 +1396,72 @@ details[open] summary::after {
 
 @media (max-width: 768px) {
   .section { padding: 3.5rem 0; }
-  .nav-links { display: none; flex-direction: column; gap: 0; }
-  .nav-links.open {
-    display: flex;
+
+  /* ── Mobile nav ── */
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    /* Always in DOM on mobile — clip open/shut with max-height */
     position: absolute;
     top: 72px;
     left: 0;
     right: 0;
+    flex-direction: column;
+    gap: 0;
     background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 1.5rem;
-    box-shadow: var(--shadow-md);
+    border-bottom: 2px solid var(--teal);
+    box-shadow: 0 8px 24px rgba(72,110,138,.15);
     z-index: 99;
+    padding: 0 1.5rem;
+    overflow: hidden;
+    /* Closed state */
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height .32s ease, opacity .25s ease, visibility .25s;
   }
-  .nav-links.open a { padding: .75rem 0; border-bottom: 1px solid var(--border); }
-  .nav-links.open .nav-cta { margin-top: .5rem; text-align: center; }
-  .nav-toggle { display: block; }
+
+  .nav-links.open {
+    max-height: 480px;
+    opacity: 1;
+    visibility: visible;
+    padding: .5rem 1.5rem 1.25rem;
+  }
+
+  /* Each nav item full-width */
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a:not(.nav-cta) {
+    display: block;
+    padding: .9rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--navy);
+  }
+
+  /* Remove underline animation on mobile (doesn't suit stacked layout) */
+  .nav-links a:not(.nav-cta)::after { display: none; }
+
+  .nav-links li:last-child a { border-bottom: none; }
+
+  .nav-links .nav-cta {
+    display: block;
+    margin-top: .75rem;
+    text-align: center;
+    border-bottom: none !important;
+  }
+
+  /* Hamburger → X animation */
+  .nav-toggle svg line {
+    transform-origin: center;
+    transition: transform .25s ease, opacity .2s ease;
+  }
+  .nav-toggle.open svg line:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle.open svg line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-toggle.open svg line:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
   .course-grid      { grid-template-columns: 1fr; }
   .pillars-grid     { grid-template-columns: 1fr; }
   .system-tiles     { grid-template-columns: 1fr; }
