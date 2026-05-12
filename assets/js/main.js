@@ -17,6 +17,22 @@ if (navToggle && navLinks) {
   });
 }
 
+// Course dropdown (mobile toggle; desktop is CSS hover)
+document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const dropdown = btn.closest('.nav-has-dropdown').querySelector('.nav-dropdown');
+    const open = dropdown.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+});
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+    d.classList.remove('open');
+    d.closest('.nav-has-dropdown')?.querySelector('.dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+  });
+});
+
 // Active nav link highlight
 const currentPath = window.location.pathname;
 document.querySelectorAll('.nav-links a').forEach(link => {
