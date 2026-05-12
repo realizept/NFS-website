@@ -1,12 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Outer teal disc -->
-  <circle cx="32" cy="32" r="31" fill="#49AEC1"/>
-  <!-- Steel blue mid ring -->
-  <circle cx="32" cy="32" r="22" fill="#81ACBE"/>
-  <!-- Inner teal disc -->
-  <circle cx="32" cy="32" r="14" fill="#49AEC1"/>
+  <!-- Outer ring -->
+  <circle cx="32" cy="32" r="31" fill="#49AEC1" opacity="0.18"/>
+  <!-- Main circle -->
+  <circle cx="32" cy="32" r="27" fill="#49AEC1"/>
+  <!-- Wave arc 1 -->
+  <path d="M 8 32 Q 20 10 32 32 Q 44 54 56 32" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  <!-- Wave arc 2 -->
+  <path d="M 14 32 Q 23 18 32 32 Q 41 46 50 32" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <!-- Core circle -->
+  <circle cx="32" cy="32" r="10" fill="white" opacity="0.15"/>
   <!-- Coral accent dot -->
-  <circle cx="26" cy="34" r="7" fill="#F29472"/>
-  <!-- White highlight on coral -->
-  <circle cx="24" cy="32" r="2.5" fill="white" opacity="0.55"/>
+  <circle cx="27" cy="34" r="6" fill="#F29472"/>
+  <!-- White ring on coral -->
+  <circle cx="27" cy="34" r="2.5" fill="white" opacity="0.6"/>
 </svg>
